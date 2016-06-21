@@ -22,17 +22,17 @@ def use_tor():
      socket.socket = socks.socksocket
      generate_vote()
 
-         def generate_vote():
-              cj = cookielib.CookieJar()
-              opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
-              session = opener.open('url.com')
-              if session.getcode() == 200:
-                  for cookie in cj:
-                      if cookie.name=='session':
-                          params = { 'id': id_number, 'submit': 'Submit', 'key':  cookie.value }
-                      url_params = urllib.urlencode(params) # url encode the parameters
-                      post=opener.open('url.com', url_params)
-                      opener.close()
+def generate_vote():
+     cj = cookielib.CookieJar()
+     opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+     session = opener.open('url.com')
+     if session.getcode() == 200:
+          for cookie in cj:
+               if cookie.name=='session':
+                    params = { 'id': id_number, 'submit': 'Submit', 'key':  cookie.value }
+          url_params = urllib.urlencode(params) # url encode the parameters
+          post=opener.open('url.com', url_params)
+     opener.close()
 
 with Controller.from_port(port = 9051) as controller:
     controller.authenticate() #write password here if you set a password earlier
