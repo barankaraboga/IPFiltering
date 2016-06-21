@@ -1,8 +1,6 @@
-import urllib2, urllib,cookielib
+import urllib2, urllib,cookielib, socket, socks
 from stem import Signal
 from stem.control import Controller
-import socket
-import socks
 
 #configuration start
 id_number=40
@@ -41,7 +39,7 @@ def generate_vote():
           post = opener.open('url.com', url_params) #make the post request
      opener.close() #close the opener
 
-with Controller.from_port(port = 9051) as controller:
+     with Controller.from_port(port = 9051) as controller: #defines controller on port 9051
     controller.authenticate() #write password here if you set a password earlier
     for _ in range(votes):
         use_tor()
