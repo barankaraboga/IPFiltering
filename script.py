@@ -39,7 +39,7 @@ def generate_vote():
           post = opener.open('url.com', url_params) #make the post request
      opener.close() #close the opener
 
-     with Controller.from_port(port = 9051) as controller: #defines controller on port 9051
+with Controller.from_port(port = 9051) as controller: #defines controller on port 9051
     controller.authenticate() #write password here if you set a password earlier
     for _ in range(votes):
         use_tor()
