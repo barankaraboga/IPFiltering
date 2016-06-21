@@ -29,7 +29,7 @@ def use_tor():
               if session.getcode() == 200:
                   for cookie in cj:
                       if cookie.name=='session':
-                          params = { ‘id’: id_number, 'submit': ‘Submit’, ‘key’:  cookie.value }
+                          params = { 'id': id_number, 'submit': 'Submit', 'key':  cookie.value }
                       url_params = urllib.urlencode(params) # url encode the parameters
                       post=opener.open('url.com', url_params)
                       opener.close()
